@@ -1,0 +1,10 @@
+br/com/fulltime/app/generator/Number.java
+ br.com.fulltime.app.generator.Number
+br/com/fulltime/app/Main.java
+ br.com.fulltime.app.Main
+br/com/fulltime/app/generator/RandomNumberGenerator.java
+ br.com.fulltime.app.generator.RandomNumberGenerator
+br/com/fulltime/app/history/History.java
+ br.com.fulltime.app.history.History
+br/com/fulltime/app/Program.java
+ br.com.fulltime.app.Program
