@@ -77,36 +77,33 @@ public class History {
 
                 Scanner scanner = new Scanner(new File(ARQUIVO_TEXTO));
                 FileWriter fileWriter = new FileWriter(ARQUIVO_TEXTO_TEMPORARIO);
+                BufferedWriter buffWriter = new BufferedWriter(fileWriter);
+                String line;
 
                 do {
-                    var line = scanner.nextLine();
+                    line = scanner.nextLine();
                     if (line.contains(id)) {
-                        break;
+                        continue;
                     } else {
-                        fileWriter.append(line + "\n");
-                        System.out.println("AQ");
-                        fileWriter.append ("d");
+                        buffWriter.write(line + "\n");
                     }
                 } while (scanner.hasNext());
 
+                buffWriter.flush();
                 scanner.close();
 
                 // Transfers contents of "textstorageTEMP.txt" to "textstorage.txt" and deletes the first
-                var readTemp = new Scanner(ARQUIVO_TEXTO_TEMPORARIO);
-                var transferTemp = new FileWriter(ARQUIVO_TEXTO);
-                transferTemp.write("");
-                try {
-                    do {
-                        System.out.println("chegou no do");
-                        transferTemp.write(readTemp.nextLine());
-                        System.out.println("terminou o do");
-                    } while (scanner.hasNext());
-                } catch (IllegalStateException ex) {}
+                Scanner scannero = new Scanner(new File(ARQUIVO_TEXTO_TEMPORARIO));
+                FileWriter transferTemp = new FileWriter(ARQUIVO_TEXTO);
+                BufferedWriter transferBuffWriter = new BufferedWriter(transferTemp);
+                String lina;
 
+                do {
+                    lina = scannero.nextLine();
+                    transferBuffWriter.write(lina + "\n");
+                } while (scannero.hasNext());
 
-
-                File temp = new File(ARQUIVO_TEXTO_TEMPORARIO);
-                temp.delete();
+                transferBuffWriter.flush();
 
                 JOptionPane.showMessageDialog(null, String.format("Number with ID %s deleted successfully.", id));
 
@@ -116,6 +113,9 @@ public class History {
         } catch (NoSuchElementException ex) {
             JOptionPane.showMessageDialog(null, "Esse ID é inválido.");
         }
+
+        File temp = new File(ARQUIVO_TEXTO_TEMPORARIO);
+        temp.delete();
 
     }
 
