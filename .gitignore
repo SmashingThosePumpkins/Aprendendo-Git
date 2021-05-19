@@ -2,3 +2,8 @@ idstorage.txt
 textstorage.txt
 .idea/
 .gradle/
+build/
+settings.gradle
+gradlew
+gradlew.bat
+build.gradle
